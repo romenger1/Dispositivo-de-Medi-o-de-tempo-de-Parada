@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotary Encoder Data</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('/data');
+            const data = await response.json();
+            document.getElementById('tempo_ms').innerText = data.tempo_ms;
+            document.getElementById('posicao').innerText = data.posicao;
+            document.getElementById('deslocamento_mm').innerText = data.deslocamento_mm;
+            document.getElementById('velocidade_mm_s').innerText = data.velocidade_mm_s;
+        }
+
+        setInterval(fetchData, 1000);
+    </script>
+</head>
+<body>
+    <h1>Rotary Encoder Data</h1>
+    <p>Tempo (ms): <span id="tempo_ms">0</span></p>
+    <p>Posição: <span id="posicao">0</span></p>
+    <p>Deslocamento (mm): <span id="deslocamento_mm">0.0</span></p>
+    <p>Velocidade (mm/s): <span id="velocidade_mm_s">0.0</span></p>
+</body>
+</html>
